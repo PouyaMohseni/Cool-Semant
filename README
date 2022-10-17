@@ -1,51 +1,42 @@
-فاز سوم پروژه کامپایلر
-در این قسمت به توضیح روند ها و تصمیمات مربوطه به آن میپردازیم.
-در برنامه سه کلاس اصلی وجود دارد یکی برای نگه داشتن ساختار کلاس، دیگری برای نگه داشتن ساختار
- درخت و کلاس دیگر برای نگه داشتن اطلاعات مربوط به یک کلاس در هنگام اجرای سمنتیک.
+Semantic (3rd) phase of compilers project
 
-تعداد حرکت روی درخت : 5 بار
-برای راحتی و تمیزی بیشتر تعداد حرکت های بیش از معمولی بر روی درخت انجام شده است
+There program architecture is OOP. There are three main Objects in the program for storing "program classes",
+"the inheritance tree" and "the semantic environment".
 
 
-حرکت اول:
-اضافه کردن نام کلاس های موجود در برنامه و بررسی تکرار دوباره تعریف کلاس
-در صورت وجود دو تعریف، تعریف اول مدنظر قرار میگیرد.
-
-حرکت دوم:
-اضافه کردن خاصیت ارث بری در کلاس ها و بررسی وجود کلاس ارث برده شده
+Number of paces on the program tree: 5
+For greater convenience and cleanliness, more than normal movements have been made on the tree
 
 
+First round:
+Adding the names of the existing classes in the program and checking the repetition of the class definition. if there are two different definitions under a same name, the first definition is considered.
 
-حرکت سوم:
-در این حرکت به دنبال متدهای تعریف شده در هرکلاس میگردیم و نام تایپ های
- ورودی و خروجی متد را به آبجکت کلاس اضافه میکنیم.
+Second round:
+Adding inheritance property in classes and checking the existence of class ansestor.
 
-حرکت چهارم:
-مشابه حرکت سوم اما روی اتربیوت های کلاس ها حرکت میکنیم و نام و تایپ آن را
- به آبچکت کلاس اضافه میکنیم.
+Third round:
+In this round, we look for the methods defined in each class and add the formals of the input and output decliered types of the method to the class object.
 
-حرکت پنجم:
-در این حرکت هرچه میخواستیم نگه داریم کامل شده و حال به سمنت کل درخت با 
-حرکت روی آن میپردازیم
+Fourth round:
+Similar to the third round, we move on the attributes of the classes and add its name and type to the class account.
+
+Fifth round:
+In this round, everything we wanted to keep has been completed, and now we are going to cement the whole tree by moving on it.
 
 
 
 
-برای سمنت اتربیوت ها همچنان که قواعد منطقی گفته بود عمل میکنیم و با داشتن 
-اینویرمنت تمام اتربیوت ها تطبیبق تایپ را برای یک اتربیوت به عمل می اوریم
-برای سمنت متد ها ابتدا به اینوایرمنت فرمال پارامترها را با تایپ تعریف شده شان 
-اور رایت میکنیم و سپس به سمنت داخل متد میپردازیم و پس از آن تایپ خروجی متد را چک میکنیم.
+For sementing attributes we confirm the logical rules, as said, and having the environment of all attributes, we apply the type adaptation for one attribute. For sementing methods, we first overwrite the parameters with their defined type in the formal environment, and then to We put the cement inside the method and after that we check the output type of the method.
 
-چه چیزی درست کار نمیکند؟
+What is not working correctly?
 
-لاین ارور همیشه خط اول را نمایش میدهد. میتواند به دلیل استفاده نکردن از کلاس تیبل تعریف شده باشد.
+1. Line error always displays the first line. It can be defined due to not using the table class.
 
-فایلی که کلاس در آن نگه داری شده درنظر گرفته نمیشود و ارور های داده شده به نام فایل اشاره نمیکنند.
+2. The file in which the class is stored is not considered and the given errors do not refer to the different file names.
 
-رابطه ساب تایپ بودن درصورت سلف تایپ بودن در همه جا درست کار نمیکند چون تابع مربوطه این را تشخیص نمیدهد
+3. The relationship of being subtyped in case of being self-typed does not work correctly everywhere because the corresponding function does not recognize this
 
- و فقط در بعضی قسمت ها هندل خارجی برای آنها نوشته شده است.
 
-چه چیزی میتوانست بهتر انجام شود؟
+What could have been done better?
 
-هنگام درخواست تایپ نود از درخت بهتر بود خروجی به جای استرینگ از تایپ سیمبل باشد.
+When requesting the node type from the tree, it would be better if the output was of the symbol type instead of a string.
