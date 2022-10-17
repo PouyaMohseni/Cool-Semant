@@ -1,7 +1,7 @@
 --semant.cc is the main file and contains methods and classes--
 
 
-Semantic (3rd) phase of compilers project
+Semantic (4th) phase of compilers project
 
 There program architecture is OOP. There are three main Objects in the program for storing "program classes",
 "the inheritance tree" and "the semantic environment".
