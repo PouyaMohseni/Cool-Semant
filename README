@@ -12,24 +12,24 @@ There program architecture is OOP. There are three main Objects in the program f
 "the inheritance tree" and "the semantic environment".
 
 
-Number of paces on the program tree: 5
+Number of traversal on the program tree: 5
 For greater convenience and cleanliness, more than normal movements have been made on the tree
 
 
-First round:
+First traversal:
 Adding the names of the existing classes in the program and checking the repetition of the class definition. if there are two different definitions under a same name, the first definition is considered.
 
-Second round:
+Second traversal:
 Adding inheritance property in classes and checking the existence of class ansestor.
 
-Third round:
-In this round, we look for the methods defined in each class and add the formals of the input and output decliered types of the method to the class object.
+Third traversal:
+In this traversal, we look for the methods defined in each class and add the formals of the input and output decliered types of the method to the class object.
 
-Fourth round:
-Similar to the third round, we move on the attributes of the classes and add its name and type to the class account.
+Fourth traversal:
+Similar to the third traversal, we move on the attributes of the classes and add its name and type to the class account.
 
-Fifth round:
-In this round, everything we wanted to keep has been completed, and now we are going to cement the whole tree by moving on it.
+Fifth traversal:
+In this traversal, everything we wanted to keep has been completed, and now we are going to cement the whole tree by moving on it.
 
 
 
