@@ -1,50 +1,66 @@
---semant.cc is the main file and contains methods and classes--
+Semantic Phase Documentation for the COOL Compiler Project
+Introduction
+This documentation covers the semantic (4th) phase of the COOL (Classroom Object-Oriented Language) compiler project, as part of the compiler course at Stanford University.
 
-About Cool Programing Language: https://web.stanford.edu/class/cs143/
-Instructions for this phase (.pdf): https://drive.google.com/file/d/1FFIpKjp4GSffSTOxyTnAx706BuxSwPxF/view?usp=sharing
+You can find detailed instructions for this phase in the provided PDF document.
 
+Code Organization
+The main file for this phase is semant.cc, which contains essential methods and classes.
 
+Program Architecture
+The program architecture is based on Object-Oriented Programming (OOP) principles. Three main objects play crucial roles in this phase:
 
+Program Classes: These objects store information about the program's classes.
 
-Semantic (4th) phase of compilers project
+Inheritance Tree: This structure represents the inheritance hierarchy of classes.
 
-There program architecture is OOP. There are three main Objects in the program for storing "program classes",
-"the inheritance tree" and "the semantic environment".
+Semantic Environment: It maintains the context and information needed for semantic analysis.
 
+Tree Traversals
+The semantic phase involves traversing the program tree multiple times (a total of 5 traversals) to perform various tasks, ensuring the accuracy and integrity of the program.
 
-Number of traversal on the program tree: 5
-For greater convenience and cleanliness, more than normal movements have been made on the tree
+First Traversal
+In the first traversal, we accomplish the following:
 
+Add the names of existing classes in the program.
+Check for the repetition of class definitions.
+Resolve conflicts if there are two different definitions under the same name by considering the first definition.
+Second Traversal
+During the second traversal:
 
-First traversal:
-Adding the names of the existing classes in the program and checking the repetition of the class definition. if there are two different definitions under a same name, the first definition is considered.
+Inheritance properties are added to classes.
+We verify the existence of class ancestors.
+Third Traversal
+The third traversal focuses on:
 
-Second traversal:
-Adding inheritance property in classes and checking the existence of class ansestor.
+Locating and recording the methods defined in each class.
+Adding the formals, including their input and output declared types, to the class object.
+Fourth Traversal
+Similar to the third traversal, the fourth traversal:
 
-Third traversal:
-In this traversal, we look for the methods defined in each class and add the formals of the input and output decliered types of the method to the class object.
+Navigates through the attributes of the classes.
+Adds attribute names and types to the class attributes.
+Fifth Traversal
+In the fifth traversal, all necessary information has been collected, and the goal is to solidify the entire tree structure.
 
-Fourth traversal:
-Similar to the third traversal, we move on the attributes of the classes and add its name and type to the class account.
+Semantic Analysis
+To ensure correctness, we apply semantic analysis to attributes and methods:
 
-Fifth traversal:
-In this traversal, everything we wanted to keep has been completed, and now we are going to cement the whole tree by moving on it.
+For attributes, we validate logical rules and apply type adaptation based on the environment of all attributes.
 
+For methods, we first substitute parameters with their defined types in the formal environment. Then, we perform type checking within the method and verify the output type.
 
+Known Issues
+It's important to acknowledge the following known issues in the current implementation:
 
+Line Error Display: The error reporting always displays the first line. This issue may be related to not utilizing the table class effectively.
 
-For sementing attributes we confirm the logical rules, as said, and having the environment of all attributes, we apply the type adaptation for one attribute. For sementing methods, we first overwrite the parameters with their defined type in the formal environment, and then to We put the cement inside the method and after that we check the output type of the method.
+File Consideration: The compiler does not consider the file in which a class is stored, resulting in error messages that do not reference different file names.
 
-What is not working correctly?
+Subtyping with Self-type: The relationship of being subtyped when involving self-typed expressions does not consistently work due to the corresponding function not recognizing this case.
 
-1. Line error always displays the first line. It can be defined due to not using the table class.
+Potential Improvements
+To enhance the current implementation, consider the following improvement opportunities:
 
-2. The file in which the class is stored is not considered and the given errors do not refer to the different file names.
-
-3. The relationship of being subtyped in case of being self-typed does not work correctly everywhere because the corresponding function does not recognize this
-
-
-What could have been done better?
-
-When requesting the node type from the tree, it would be better if the output was of the symbol type instead of a string.
+When requesting the node type from the tree, outputting the symbol type instead of a string could enhance clarity and accuracy in type-related operations.
+By addressing these issues and implementing potential improvements, the COOL compiler's semantic phase can achieve greater functionality and reliability.
