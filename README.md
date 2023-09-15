@@ -1,16 +1,48 @@
-# **COOL Compiler Semantic Phase Documentation**
+# COOL Compiler Parser and Semantic Phase Documentation
 
-## **Introduction**
+## Parser
+
+### Introduction
+
+The parser code, defined in `parser.cpp`, is a crucial component of the COOL (Classroom Object-Oriented Language) compiler project. It defines the grammar rules for parsing COOL programs and generating an abstract syntax tree (AST) as output.
+
+### Parser Organization
+
+The parser relies on Bison and takes the output of the lexer (scanner) as input. It defines terminal and non-terminal symbols, specifies the grammar rules, and associates semantic actions with each production rule.
+
+Key components of the parser code include:
+
+- Declarations of terminals and non-terminals.
+- Precedence declarations for operators.
+- Grammar rules for parsing COOL programs, including class definitions, features, expressions, and more.
+- Semantic actions embedded within grammar rules to construct the AST.
+
+### Usage of Provided Code
+
+To use the parser effectively:
+
+1. **Lexer Integration**: Ensure that the lexer (scanner) generates tokens compatible with the parser. Terminal symbols in the parser code must match those produced by the lexer.
+
+2. **Grammar Rules**: Review and possibly modify the grammar rules to match the syntax of your COOL programs. Ensure that the rules accurately reflect the language's structure.
+
+3. **Semantic Actions**: Implement semantic actions within grammar rules as needed. These actions construct nodes of the AST, which will be used in the subsequent semantic analysis phase.
+
+4. **Error Handling**: Customize the `yyerror` function to handle parse errors gracefully. The provided function reports errors, including the file name and line number, and tracks the number of errors.
+
+## Semantic Analysis Phase
+
+
+### **Introduction**
 
 This documentation covers the semantic (4th) phase of the COOL (Classroom Object-Oriented Language) compiler project, as part of the compiler course at [Stanford University](https://web.stanford.edu/class/cs143/).
 
 For detailed instructions on this phase, please refer to the [provided PDF document](https://drive.google.com/file/d/1FFIpKjp4GSffSTOxyTnAx706BuxSwPxF/view?usp=sharing).
 
-## Code Organization
+### Code Organization
 
 The primary file for this phase is `semant.cc`, which contains essential methods and classes. Below, we'll explore key components of this code.
 
-### Symbol Definitions
+#### Symbol Definitions
 
 In the code, there are numerous predefined symbols that play a crucial role in the semantic analysis process. These symbols include primitive types and method names, as well as fixed names used by the runtime system. They are defined as follows:
 
@@ -44,19 +76,19 @@ static Symbol
     val;
 ```
 
-## **Class Definitions**
+### **Class Definitions**
 
 The provided code defines several classes and data structures used during the semantic analysis of the COOL program. These classes include attr_, method_, inherited_, and tree_inherited_, among others. Each class serves a specific purpose in the analysis process and helps organize the program's structure.
 
-## **Semantic Analysis Environment**
+### **Semantic Analysis Environment**
 
 The semant_env_ class represents the program's semantic environment and encapsulates important data structures, such as attr_env, method_env, and class_ptr. This class enables the program to track and verify attributes, methods, and class relationships during semantic analysis.
 
-## **Initialization and Class Setup**
+### **Initialization and Class Setup**
 
 The code snippet also contains initialization routines, such as initialize_constants(), which sets up the predefined symbols, and tree_inherited_::in_tree_initialize(), which initializes the inheritance tree with predefined classes (e.g., Object, IO, Int, Bool, and Str).
 
-## **Usage of Provided Code**
+### **Usage of Provided Code**
 
 The provided code forms the foundation for performing semantic analysis on COOL programs. It defines the necessary symbols, structures, and classes to validate the program's correctness, inheritance hierarchy, attributes, and methods.
 
@@ -68,7 +100,7 @@ To use this code effectively, follow these steps:
 
 3. **Semantic Analysis**: Utilize the semant_env_ class to perform semantic analysis on individual classes and expressions within the program. This includes verifying attributes, methods, and type compatibility.
 
-## **Program Architecture**
+### **Program Architecture**
 
 Our implementation follows Object-Oriented Programming (OOP) principles. Three core objects play vital roles in this phase:
 
@@ -78,11 +110,11 @@ Our implementation follows Object-Oriented Programming (OOP) principles. Three c
 
 3. **Semantic Environment**: It maintains the context and information needed for semantic analysis.
 
-## **Tree Traversals**
+### **Tree Traversals**
 
 The semantic phase involves five tree traversals to perform various tasks, ensuring the accuracy and integrity of the program.
 
-### **First Traversal**
+#### **First Traversal**
 
 In the first traversal, we accomplish the following:
 
@@ -90,32 +122,32 @@ In the first traversal, we accomplish the following:
 - Check for the repetition of class definitions.
 - Resolve conflicts if there are two different definitions under the same name by considering the first definition.
 
-### **Second Traversal**
+#### **Second Traversal**
 
 During the second traversal:
 
 - Inheritance properties are added to classes.
 - We verify the existence of class ancestors.
 
-### **Third Traversal**
+#### **Third Traversal**
 
 The third traversal focuses on:
 
 - Locating and recording the methods defined in each class.
 - Adding the formals, including their input and output declared types, to the class object.
 
-### **Fourth Traversal**
+#### **Fourth Traversal**
 
 Similar to the third traversal, the fourth traversal:
 
 - Navigates through the attributes of the classes.
 - Adds attribute names and types to the class attributes.
 
-### **Fifth Traversal**
+#### **Fifth Traversal**
 
 In the fifth traversal, all necessary information has been collected, and the goal is to solidify the entire tree structure.
 
-## **Semantic Analysis**
+### **Semantic Analysis**
 
 To ensure correctness, we apply semantic analysis to attributes and methods:
 
@@ -123,7 +155,7 @@ To ensure correctness, we apply semantic analysis to attributes and methods:
 
 - For methods, we first substitute parameters with their defined types in the formal environment. Then, we perform type checking within the method and verify the output type.
 
-## **Known Issues**
+### **Known Issues**
 
 It's important to acknowledge the following known issues in the current implementation:
 
@@ -133,7 +165,7 @@ It's important to acknowledge the following known issues in the current implemen
 
 3. **Subtyping with Self-type**: The relationship of being subtyped when involving self-typed expressions does not consistently work due to the corresponding function not recognizing this case.
 
-## **Potential Improvements**
+### **Potential Improvements**
 
 To enhance the current implementation, consider the following improvement opportunities:
 
