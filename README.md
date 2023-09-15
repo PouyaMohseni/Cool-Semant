@@ -6,9 +6,43 @@ This documentation covers the semantic (4th) phase of the COOL (Classroom Object
 
 For detailed instructions on this phase, please refer to the [provided PDF document](https://drive.google.com/file/d/1FFIpKjp4GSffSTOxyTnAx706BuxSwPxF/view?usp=sharing).
 
-## **Code Organization**
+## Code Organization
 
-The primary file for this phase is `semant.cc`, which contains essential methods and classes.
+The primary file for this phase is `semant.cc`, which contains essential methods and classes. Below, we'll explore key components of this code.
+
+### Symbol Definitions
+
+In the code, there are numerous predefined symbols that play a crucial role in the semantic analysis process. These symbols include primitive types and method names, as well as fixed names used by the runtime system. They are defined as follows:
+
+```cpp
+static Symbol 
+    arg,
+    arg2,
+    Bool,
+    concat,
+    cool_abort,
+    copy,
+    Int,
+    in_int,
+    in_string,
+    IO,
+    length,
+    Main,
+    main_meth,
+    No_class,
+    No_type,
+    Object,
+    out_int,
+    out_string,
+    prim_slot,
+    self,
+    SELF_TYPE,
+    Str,
+    str_field,
+    substr,
+    type_name,
+    val;
+```
 
 ## **Program Architecture**
 
