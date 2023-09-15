@@ -44,6 +44,30 @@ static Symbol
     val;
 ```
 
+## **Class Definitions**
+
+The provided code defines several classes and data structures used during the semantic analysis of the COOL program. These classes include attr_, method_, inherited_, and tree_inherited_, among others. Each class serves a specific purpose in the analysis process and helps organize the program's structure.
+
+## **Semantic Analysis Environment**
+
+The semant_env_ class represents the program's semantic environment and encapsulates important data structures, such as attr_env, method_env, and class_ptr. This class enables the program to track and verify attributes, methods, and class relationships during semantic analysis.
+
+## **Initialization and Class Setup**
+
+The code snippet also contains initialization routines, such as initialize_constants(), which sets up the predefined symbols, and tree_inherited_::in_tree_initialize(), which initializes the inheritance tree with predefined classes (e.g., Object, IO, Int, Bool, and Str).
+
+## **Usage of Provided Code**
+
+The provided code forms the foundation for performing semantic analysis on COOL programs. It defines the necessary symbols, structures, and classes to validate the program's correctness, inheritance hierarchy, attributes, and methods.
+
+To use this code effectively, follow these steps:
+
+1. **Initialization**: Ensure that the initialize_constants() function is called to set up the predefined symbols before performing semantic analysis.
+
+2. **Inheritance Tree**: Utilize the tree_inherited_ class and its functions to build and validate the inheritance tree of program classes. This includes adding classes, checking for cycles, and verifying the existence of a Main class.
+
+3. **Semantic Analysis**: Utilize the semant_env_ class to perform semantic analysis on individual classes and expressions within the program. This includes verifying attributes, methods, and type compatibility.
+
 ## **Program Architecture**
 
 Our implementation follows Object-Oriented Programming (OOP) principles. Three core objects play vital roles in this phase:
